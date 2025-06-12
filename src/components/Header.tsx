@@ -26,6 +26,19 @@ const Header = () => {
     };
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,7 +94,7 @@ const Header = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white/80 hover:text-white transition-colors z-50 relative"
+              className="text-white/80 hover:text-white transition-colors z-[60] relative"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -89,75 +102,78 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden" onClick={() => setIsMobileMenuOpen(false)} />
-        )}
+        <div 
+          className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-all duration-500 ${
+            isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`} 
+          onClick={() => setIsMobileMenuOpen(false)} 
+        />
 
         {/* Mobile Menu */}
-        <div className={`fixed top-0 right-0 h-full w-80 bg-black/95 backdrop-blur-sm border-l border-white/10 z-50 transform transition-transform duration-300 md:hidden ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        <div className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-black/98 backdrop-blur-md border-l border-white/10 z-50 transform transition-all duration-500 ease-in-out md:hidden ${
+          isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
         }`}>
-          <div className="flex flex-col h-full pt-20 px-6">
-            <nav className="flex flex-col space-y-4">
+          <div className="flex flex-col h-full pt-20 px-6 bg-gradient-to-b from-black/95 to-black">
+            <nav className="flex flex-col space-y-2">
               <a 
                 href="#why-us" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Why Us
               </a>
               <a 
                 href="#mission" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Mission
               </a>
               <a 
                 href="#works" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Works
               </a>
               <a 
                 href="#services" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Services
               </a>
               <a 
                 href="#pricing" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Pricing
               </a>
               <a 
                 href="#testimonials" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Testimonials
               </a>
               <a 
                 href="#team" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Team
               </a>
               <a 
                 href="#faq" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 FAQ
               </a>
               <a 
                 href="#contact" 
-                className="block px-3 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded transition-colors"
+                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Contact
@@ -166,7 +182,7 @@ const Header = () => {
               <div className="pt-6">
                 <a 
                   href="#contact" 
-                  className="block w-full bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg transition-all duration-300 text-center"
+                  className="block w-full bg-primary hover:bg-primary/90 text-white px-6 py-4 rounded-lg transition-all duration-300 text-center font-semibold shadow-lg hover:shadow-primary/20"
                   onClick={handleMobileLinkClick}
                 >
                   Let's Talk
