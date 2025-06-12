@@ -1,47 +1,63 @@
 
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Mission = () => {
+  const [ref, isVisible] = useScrollAnimation(0.1);
+
   return (
-    <section id="mission" className="py-24 bg-black dot-bg">
+    <section id="mission" className="py-24 bg-black dot-bg border-b border-white/10" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <div className="inline-block bg-astex-gray/50 border border-white/10 rounded-full px-4 py-2 mb-6">
-            <span className="text-white/80 text-sm">Our Mission</span>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className={`scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}>
+            <div className="inline-block bg-astex-gray/50 border border-white/10 rounded-full px-4 py-2 mb-6">
+              <span className="text-white/80 text-sm">Our Mission</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Bridging Knowledge & Implementation
+            </h2>
+            <p className="text-white/70 text-lg mb-8">
+              Our mission is to create a community where talented individuals can thrive by combining knowledge with practical experience. Astex aims to equip students, freelancers, and budding entrepreneurs with the tools and opportunities they need to excel.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <span className="text-white">Empowering businesses and individuals</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <span className="text-white">Fostering innovation in the tech industry</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <span className="text-white">Creating learning opportunities</span>
+              </div>
+            </div>
           </div>
           
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight animate-fade-in">
-            We Drive <span className="text-primary">Businesses</span>
-            <br />
-            To The <span className="text-primary">Forefront</span> Of The Industries
-            <br />
-            Through Comprehensive
-            <br />
-            AI <span className="text-primary">Automation.</span>
-          </h2>
-
-          <p className="text-white/70 text-lg max-w-3xl mx-auto mb-12 animate-fade-in">
-            First impressions matter. That's why our mission is to create clean, enduring 
-            designs that elevate. First impressions matter. That's why our mission.
-          </p>
-
-          <div className="animate-fade-in">
-            <a 
-              href="#contact" 
-              className="btn-primary inline-flex items-center space-x-2"
-            >
-              <span>Book A Call</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a>
-          </div>
-
-          {/* Arrow Down */}
-          <div className="mt-24 animate-bounce">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mx-auto text-primary">
-              <path d="M12 5v14M19 12l-7 7-7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+          <div className={`scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'} delay-300`}>
+            <div className="relative">
+              <div className="bg-gradient-to-br from-primary/20 to-transparent p-8 rounded-2xl border border-white/10">
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/70">Projects Completed</span>
+                    <span className="text-primary font-bold text-xl">150+</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/70">Happy Clients</span>
+                    <span className="text-primary font-bold text-xl">100+</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/70">Team Members</span>
+                    <span className="text-primary font-bold text-xl">25+</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/70">Years of Experience</span>
+                    <span className="text-primary font-bold text-xl">5+</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
