@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const FAQ = () => {
-  const [openFaq, setOpenFaq] = useState(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [ref, isVisible] = useScrollAnimation(0.1);
 
   const faqs = [
     {
@@ -24,14 +26,14 @@ const FAQ = () => {
     }
   ];
 
-  const toggleFaq = (index) => {
+  const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
   return (
-    <section id="faq" className="py-24 bg-black dot-bg">
+    <section id="faq" className="py-24 bg-black dot-bg" ref={ref}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className={`text-center mb-16 scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}>
           <div className="inline-block bg-astex-gray/50 border border-white/10 rounded-full px-4 py-2 mb-6">
             <span className="text-white/80 text-sm">Need to Know</span>
           </div>
@@ -44,26 +46,38 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="bg-astex-gray/30 border border-white/10 rounded-2xl overflow-hidden animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`bg-astex-gray/30 border border-white/10 rounded-2xl overflow-hidden scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-all duration-300"
               >
-                <span className="text-lg font-medium text-white">{faq.question}</span>
+                <span className="text-lg font-medium text-white pr-4">{faq.question}</span>
                 <ChevronDown 
-                  className={`w-6 h-6 text-white/70 transition-transform ${
-                    openFaq === index ? 'rotate-180' : ''
+                  className={`w-6 h-6 text-white/70 transition-all duration-300 flex-shrink-0 ${
+                    openFaq === index ? 'rotate-180 text-primary' : ''
                   }`}
                 />
               </button>
               
-              {openFaq === index && (
+              <div 
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                  openFaq === index 
+                    ? 'max-h-96 opacity-100' 
+                    : 'max-h-0 opacity-0'
+                }`}
+              >
                 <div className="px-6 pb-6">
-                  <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+                  <div className={`transform transition-all duration-500 ${
+                    openFaq === index 
+                      ? 'translate-y-0 opacity-100' 
+                      : '-translate-y-4 opacity-0'
+                  }`}>
+                    <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

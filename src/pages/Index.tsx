@@ -12,7 +12,6 @@ import Team from '../components/Team';
 import FAQ from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
 import Contact from '../components/Contact';
-import Footer from '../components/Footer';
 
 const Index = () => {
   return (
@@ -27,9 +26,8 @@ const Index = () => {
       <Testimonials />
       <Team />
       <FAQ />
-      <FinalCTA />
       <Contact />
-      <Footer />
+      <FinalCTA />
     </div>
   );
 };
