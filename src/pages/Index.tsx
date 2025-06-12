@@ -6,6 +6,11 @@ import Benefits from '../components/Benefits';
 import Mission from '../components/Mission';
 import RecentWorks from '../components/RecentWorks';
 import Services from '../components/Services';
+import Pricing from '../components/Pricing';
+import Testimonials from '../components/Testimonials';
+import Team from '../components/Team';
+import FAQ from '../components/FAQ';
+import FinalCTA from '../components/FinalCTA';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
@@ -18,6 +23,11 @@ const Index = () => {
       <Mission />
       <RecentWorks />
       <Services />
+      <Pricing />
+      <Testimonials />
+      <Team />
+      <FAQ />
+      <FinalCTA />
       <Contact />
       <Footer />
     </div>

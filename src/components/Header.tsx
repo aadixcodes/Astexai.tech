@@ -32,10 +32,12 @@ const Header = () => {
               </button>
               
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-astex-gray border border-white/10 rounded-lg shadow-lg">
-                  <a href="#about" className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/5">About Us</a>
+                <div className="absolute top-full left-0 mt-2 w-48 bg-astex-gray border border-white/10 rounded-lg shadow-lg z-50">
+                  <a href="#pricing" className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/5">Pricing</a>
+                  <a href="#testimonials" className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/5">Testimonials</a>
+                  <a href="#team" className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/5">Team</a>
+                  <a href="#faq" className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/5">FAQ</a>
                   <a href="#contact" className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/5">Contact</a>
-                  <a href="#portfolio" className="block px-4 py-2 text-white/80 hover:text-white hover:bg-white/5">Portfolio</a>
                 </div>
               )}
             </div>
