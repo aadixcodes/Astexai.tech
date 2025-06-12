@@ -45,7 +45,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-primary">Astex</h1>
+            <a href="/" className="text-2xl font-bold text-primary">Astex</a>
           </div>
 
           {/* Desktop Navigation */}
@@ -67,11 +67,8 @@ const Header = () => {
               
               {isDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-sm border border-white/10 rounded-lg shadow-xl z-50">
-                  <a href="#pricing" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors">Pricing</a>
-                  <a href="#testimonials" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors">Testimonials</a>
-                  <a href="#team" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors">Team</a>
-                  <a href="#faq" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors">FAQ</a>
-                  <a href="#contact" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors">Contact</a>
+                  <a href="/contact" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors">Contact Us</a>
+                  <a href="/terms" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 transition-colors">Terms & Conditions</a>
                 </div>
               )}
             </div>
@@ -80,7 +77,7 @@ const Header = () => {
           {/* Desktop CTA Button */}
           <div className="hidden md:flex items-center">
             <a 
-              href="#contact" 
+              href="/contact" 
               className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
             >
               <span>Let's Talk</span>
@@ -103,7 +100,7 @@ const Header = () => {
 
         {/* Mobile Menu Overlay */}
         <div 
-          className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-all duration-500 ${
+          className={`fixed inset-0 bg-black/90 backdrop-blur-sm z-40 md:hidden transition-all duration-500 ${
             isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`} 
           onClick={() => setIsMobileMenuOpen(false)} 
@@ -144,44 +141,23 @@ const Header = () => {
                 Services
               </a>
               <a 
-                href="#pricing" 
+                href="/contact" 
                 className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
-                Pricing
+                Contact Us
               </a>
               <a 
-                href="#testimonials" 
+                href="/terms" 
                 className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
-                Testimonials
-              </a>
-              <a 
-                href="#team" 
-                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
-              >
-                Team
-              </a>
-              <a 
-                href="#faq" 
-                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
-              >
-                FAQ
-              </a>
-              <a 
-                href="#contact" 
-                className="block px-4 py-4 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
-              >
-                Contact
+                Terms & Conditions
               </a>
               
               <div className="pt-6">
                 <a 
-                  href="#contact" 
+                  href="/contact" 
                   className="block w-full bg-primary hover:bg-primary/90 text-white px-6 py-4 rounded-lg transition-all duration-300 text-center font-semibold shadow-lg hover:shadow-primary/20"
                   onClick={handleMobileLinkClick}
                 >
