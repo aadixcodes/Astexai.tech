@@ -32,10 +32,10 @@ const Services = () => {
             <div>class ChatBot{'{'}</div>
             <div className="ml-4">address public owner;</div>
             <div className="ml-4">int private response;</div>
-            <div className="ml-4">constructor(){'{'}}</div>
+            <div className="ml-4">constructor(){'{'}</div>
             <div className="ml-4">owner = msg.sender;</div>
             <div>{'}'}</div>
-            <div>function response(msg){'{'}}</div>
+            <div>function response(msg){'{'}</div>
           </div>
         </div>
       )
