@@ -37,7 +37,7 @@ const RecentWorks = () => {
   const currentProject = projects[activeProject];
 
   return (
-    <section id="works" className="py-24 bg-black dot-bg" ref={ref}>
+    <section id="works" className="py-10 md:py-20 bg-black dot-bg" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-16 scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}>
           <div className="inline-block bg-astex-gray/50 border border-white/10 rounded-full px-4 py-2 mb-6">

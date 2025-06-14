@@ -28,7 +28,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section id="why-us" className="py-24 bg-black dot-bg border-b border-white/10" ref={ref}>
+    <section id="why-us" className="py-10 md:py-20 bg-black dot-bg" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`text-center mb-16 scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}>
           <div className="inline-block bg-astex-gray/50 border border-white/10 rounded-full px-4 py-2 mb-6">
@@ -50,7 +50,7 @@ const Benefits = () => {
             return (
               <div 
                 key={index}
-                className={`bg-astex-gray/30 border border-white/10 rounded-2xl p-8 card-hover scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}
+                className={`bg-astex-gray/30 border border-white/10 rounded-2xl p-8 scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}
                 style={{ transitionDelay: `${index * 0.1}s` }}
               >
                 <div className="mb-6">
@@ -70,7 +70,7 @@ const Benefits = () => {
         <div className="text-center">
           <a 
             href="#pricing" 
-            className="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 font-medium"
+            className="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-medium"
           >
             See Pricing
             <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

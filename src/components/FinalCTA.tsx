@@ -6,7 +6,7 @@ const FinalCTA = () => {
   const [ref, isVisible] = useScrollAnimation(0.1);
 
   return (
-    <section className="py-24 bg-black dot-bg relative" ref={ref}>
+    <section className="py-10 md:py-20 bg-black dot-bg relative" ref={ref}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* FAQ Header */}
         <div className={`mb-16 scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`}>
