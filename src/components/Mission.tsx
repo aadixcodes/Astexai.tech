@@ -133,7 +133,7 @@ const Mission = () => {
 
           {/* CTA Button */}
           <div className={`mb-16 transition-all duration-500 delay-[${200 * (headingLines.length + 2)}ms] ${loadedWords.length === headingLines.length ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <a 
+            {/* <a 
               href="#contact" 
               className="inline-flex items-center bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 font-medium text-lg"
             >
@@ -141,7 +141,37 @@ const Mission = () => {
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </a> */}
+            <button
+                className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200  mb-8 group overflow-hidden"
+                style={{
+                  border: "1px solid rgb(255, 177, 104)",
+                  background:
+                    "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+                }}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <span className="text-white font-medium">Book A Call</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white transition-transform group-hover:translate-x-1"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+
+                {/* Optional hover overlay effect */}
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300"></div>
+              </button>
           </div>
 
           {/* Animated Arrow */}

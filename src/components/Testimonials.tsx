@@ -95,7 +95,7 @@ const Testimonials = () => {
           {companyTestimonials.map((testimonial, index) => (
             <div 
               key={index}
-              className="bg-astex-gray/30 border border-white/10 rounded-2xl p-6 card-hover animate-fade-in"
+              className="bg-[#141414] border border-white/10 rounded-2xl p-6 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center justify-between mb-4">

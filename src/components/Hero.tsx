@@ -70,7 +70,7 @@ const Hero = () => {
 
           {/* CTA Button */}
           <div className={`transition-all duration-500 delay-[${300 * (headingWords.length + 1)}ms] ${loadedWords.length === headingWords.length ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <a 
+            {/* <a 
               href="#services" 
               className="btn-primary px-4 text-black py-2 inline-flex items-center space-x-2 text-lg group"
             >
@@ -78,7 +78,37 @@ const Hero = () => {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform group-hover:translate-x-1">
                 <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
+            </a> */}
+            <button
+                className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200  mb-8 group overflow-hidden"
+                style={{
+                  border: "1px solid rgb(255, 177, 104)",
+                  background:
+                    "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+                }}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <span className="text-white font-medium">Get Started</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white transition-transform group-hover:translate-x-1"
+                  >
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </div>
+
+                {/* Optional hover overlay effect */}
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300"></div>
+              </button>
           </div>
 
           {/* Partner Logos */}
