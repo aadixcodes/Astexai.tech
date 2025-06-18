@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import ContactUs from "./pages/ContactUs";
 import TermsConditions from "./pages/TermsConditions";
 import Pricing from "./pages/Pricing";
+import JoinUs from "./pages/JoinUs";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -48,6 +49,7 @@ const App = () => {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/terms-and-conditions" element={<TermsConditions />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/join-our-team" element={<JoinUs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
