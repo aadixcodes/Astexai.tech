@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -40,14 +41,14 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4  sm:px-6 lg:px-8 py-4">
         {/* Main Nav Container */}
         <div 
-          className="relative  rounded-[40px] overflow-hidden"
+          className="relative  rounded-[40px]"
           style={{
             background: 'linear-gradient(180deg, rgba(33, 33, 33, 1) 0%, rgba(33, 33, 33, 0.4) 100%)'
           }}
         >
           {/* Inner Container */}
           <div className="bg-[#050505] border-gray border-2 rounded-[40px] px-2">
-            <div className="flex items-center justify-between h-16 px-6">
+            <div className="flex items-center justify-between h-14 px-6">
               {/* Logo */}
               <div className="flex-shrink-0">
                 <a href="/" className="text-2xl font-bold text-white">
@@ -78,8 +79,9 @@ const Header = () => {
                   
                   {isDropdownOpen && (
                     <div className="absolute top-full left-0 mt-2 w-48 bg-[#050505] backdrop-blur-sm border border-white/10 rounded-lg shadow-xl z-50">
-                      <a href="/contact" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Contact Us</a>
-                      <a href="/terms" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Terms & Conditions</a>
+                      <Link to="/contact" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Contact Us</Link>
+                      <Link to="/terms-and-conditions" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Terms & Conditions</Link>
+                      <Link to="/pricing" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Our Pricing</Link>
                     </div>
                   )}
                 </div>
@@ -87,8 +89,8 @@ const Header = () => {
 
               {/* Desktop CTA Button */}
               <div className="hidden md:flex items-center">
-                <a 
-                  href="/contact" 
+                <Link 
+                  to="/contact" 
                   className="relative overflow-hidden rounded-lg px-6 py-2.5 transition-all duration-300 hover:scale-105 flex items-center space-x-2"
                   style={{
                     backgroundColor: '#0d0d0d',
@@ -125,7 +127,7 @@ const Header = () => {
                   >
                     <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </a>
+                </Link>
               </div>
 
               {/* Mobile Menu Button */}
@@ -183,24 +185,31 @@ const Header = () => {
               >
                 Services
               </a>
-              <a 
-                href="/contact" 
+              <Link
+                to="/contact" 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Contact Us
-              </a>
-              <a 
-                href="/terms" 
+              </Link>
+              <Link
+                href="/terms-and-conditions" 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Terms & Conditions
-              </a>
+              </Link>
+              <Link
+                href="/pricing" 
+                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
+                onClick={handleMobileLinkClick}
+              >
+                Our Pricing
+              </Link>
               
               <div className="pt-6">
-                <a 
-                  href="/contact" 
+                <Link
+                  to="/contact" 
                   className="relative block w-full bg-[#0d0d0d] text-[#dedede] px-6 py-4 rounded-lg transition-all duration-300 text-center font-semibold hover:scale-105"
                   onClick={handleMobileLinkClick}
                 >
@@ -234,7 +243,7 @@ const Header = () => {
                       <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
-                </a>
+                </Link>
               </div>
             </nav>
           </div>

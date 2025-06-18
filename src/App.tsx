@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import Index from "./pages/Index";
 import ContactUs from "./pages/ContactUs";
 import TermsConditions from "./pages/TermsConditions";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,7 +44,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/contact" element={<ContactUs />} />
-            <Route path="/terms" element={<TermsConditions />} />
+            <Route path="/terms-and-conditions" element={<TermsConditions />} />
+            <Route path="/pricing" element={<Pricing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

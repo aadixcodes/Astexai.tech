@@ -51,23 +51,23 @@ const Services = () => {
 
   const additionalServices = [
     { 
-      name: "AI-Driven Solutions", 
+      name: "AI Agent Development", 
       icon: "https://framerusercontent.com/images/sPmibGCLfmQVJHX0tlJqMt1ZOb8.svg" 
     },
     { 
-      name: "Serverless Computing", 
+      name: "Website Development", 
       icon: "https://framerusercontent.com/images/TpMsQ4JuQXH87CLdEKVrih7OjaY.svg" 
     },
     { 
-      name: "Cloud Integration", 
+      name: "App Development", 
       icon: "https://framerusercontent.com/images/fGRMJzZ1klCadiGWxHOwXOZ9qK0.svg" 
     },
     { 
-      name: "Data Insight", 
+      name: "Graphic Design", 
       icon: "https://framerusercontent.com/images/OT81xXSmHrXj05Gjwm0H4r7m0L8.svg" 
     },
     { 
-      name: "Analytics", 
+      name: "Startup Ideation", 
       icon: "https://framerusercontent.com/images/0EJSat3AKzJRdD6xxuuiwMg63y4.svg" 
     },
     { 
@@ -79,7 +79,7 @@ const Services = () => {
       icon: "https://framerusercontent.com/images/QKgOGYR4rTNLO3KDEZLPDU6wvU.svg" 
     },
     { 
-      name: "Ad Targeting", 
+      name: "Data Analytics", 
       icon: "https://framerusercontent.com/images/Hy7hoU7QAz66ago0Fs6owYjA.svg" 
     }
   ];

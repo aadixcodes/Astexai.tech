@@ -3,11 +3,18 @@ import React, { useState, useEffect } from 'react';
 const Hero = () => {
   const [loadedWords, setLoadedWords] = useState([]);
   const headingWords = [
-    "Automation Agency",
-    "Beyond",
-    "Limits.",
-    "Amplified With AI."
+    "Next-Gen",
+    "Websites",
+    " Bold Ideas.",
+    "Built To Convert."
   ];
+
+  const redirectToWhatsApp = () => {
+    const phoneNumber = '+919755562101'; // Your WhatsApp number
+    const message = 'Hello ASTEX, I want to get started with your services!';
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
   
 
   useEffect(() => {
@@ -35,7 +42,7 @@ const Hero = () => {
           {/* Availability Badge */}
           <div className={`inline-flex items-center space-x-2 bg-astex-gray/50 border rounded-full px-4 py-2 mb-8 transition-all duration-1000 ${loadedWords.length > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-white/80 text-sm">Available now, for your business</span>
+            <span className="text-white/80 text-sm">Available now, for brands that demand more</span>
           </div>
 
           {/* Main Heading */}
@@ -65,21 +72,13 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className={`text-xl text-white/70 max-w-2xl mx-auto mb-12 transition-all duration-500 delay-[${300 * headingWords.length}ms] ${loadedWords.length === headingWords.length ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            Design services at your fingertips. Pause or cancel anytime.
+          Design stunning, responsive, high-speed websites. Launch or upgrade anytime.
           </p>
 
           {/* CTA Button */}
           <div className={`transition-all duration-500 delay-[${300 * (headingWords.length + 1)}ms] ${loadedWords.length === headingWords.length ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            {/* <a 
-              href="#services" 
-              className="btn-primary px-4 text-black py-2 inline-flex items-center space-x-2 text-lg group"
-            >
-              <span>Learn More</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform group-hover:translate-x-1">
-                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </a> */}
             <button
+             onClick={redirectToWhatsApp}
                 className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200  mb-8 group overflow-hidden"
                 style={{
                   border: "1px solid rgb(255, 177, 104)",
