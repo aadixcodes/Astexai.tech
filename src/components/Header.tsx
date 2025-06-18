@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -9,6 +10,17 @@ const Header = () => {
   const handleMobileLinkClick = () => {
     setIsMobileMenuOpen(false);
   };
+  
+  const navigate = useNavigate();
+
+  const handleSectionClick = (id) => {
+    if (window.location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: id } });
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -62,10 +74,10 @@ const Header = () => {
 
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center space-x-8">
-                <a href="#why-us" className="text-[#afafaf] hover:text-white transition-colors">Why Us</a>
-                <a href="#mission" className="text-[#afafaf] hover:text-white transition-colors">Mission</a>
-                <a href="#works" className="text-[#afafaf] hover:text-white transition-colors">Works</a>
-                <a href="#services" className="text-[#afafaf] hover:text-white transition-colors">Services</a>
+                <button onClick={() => handleSectionClick("why-us")} className="text-[#afafaf] hover:text-white transition-colors">Why Us</button>
+                <button onClick={() => handleSectionClick("mission")} className="text-[#afafaf] hover:text-white transition-colors">Mission</button>
+                <button onClick={() => handleSectionClick("works")} className="text-[#afafaf] hover:text-white transition-colors">Works</button>
+                <button onClick={() => handleSectionClick("services")} className="text-[#afafaf] hover:text-white transition-colors">Services</button>
                 
                 {/* Pages Dropdown */}
                 <div className="relative dropdown-container">
@@ -157,34 +169,34 @@ const Header = () => {
         }`}>
           <div className="flex flex-col h-full pt-20 px-6">
             <nav className="flex flex-col space-y-2">
-              <a 
-                href="#why-us" 
+              <button 
+                onClick={() => handleSectionClick("why-us")}
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Why Us
-              </a>
-              <a 
-                href="#mission" 
+              </button>
+              <button 
+                onClick={() => handleSectionClick("mission")}
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Mission
-              </a>
-              <a 
-                href="#works" 
+              </button>
+              <button 
+                onClick={() => handleSectionClick("works")} 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Works
-              </a>
-              <a 
-                href="#services" 
+              </button>
+              <button 
+                onClick={() => handleSectionClick("services")} 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
                 onClick={handleMobileLinkClick}
               >
                 Services
-              </a>
+              </button>
               <Link
                 to="/contact" 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"

@@ -4,10 +4,19 @@ import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { useNavigate, Link } from "react-router-dom";
 
 
+
 const FinalCTA = () => {
   const [ref, isVisible] = useScrollAnimation(0.1);
 
   const navigate = useNavigate();
+
+  const handleSectionClick = (id) => {
+    if (window.location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: id } });
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleRedirect = () => {
     navigate("/contact");
@@ -74,10 +83,10 @@ const FinalCTA = () => {
         {/* Footer Navigation */}
         <div className={`border-t border-white/10 pt-12 scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`} style={{ transitionDelay: '0.4s' }}>
           <nav className="flex flex-wrap justify-center gap-8 mb-8">
-            <Link to="#why-us" className="text-white/60 hover:text-white transition-colors">Why Us</Link>
-            <Link to="#mission" className="text-white/60 hover:text-white transition-colors">Mission</Link>
-            <Link to="#works" className="text-white/60 hover:text-white transition-colors">Works</Link>
-            <Link to="#services" className="text-white/60 hover:text-white transition-colors">Services</Link>
+            <button onClick={() => handleSectionClick("why-us")}  className="text-white/60 hover:text-white transition-colors">Why Us</button>
+            <button onClick={() => handleSectionClick("mission")} className="text-white/60 hover:text-white transition-colors">Mission</button>
+            <button onClick={() => handleSectionClick("works")} className="text-white/60 hover:text-white transition-colors">Works</button>
+            <button onClick={() => handleSectionClick("services")} className="text-white/60 hover:text-white transition-colors">Services</button>
             <Link to="/contact" className="text-white/60 hover:text-white transition-colors">Contact</Link>
           </nav>
           

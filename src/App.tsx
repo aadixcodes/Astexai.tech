@@ -10,6 +10,7 @@ import ContactUs from "./pages/ContactUs";
 import TermsConditions from "./pages/TermsConditions";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/contact" element={<ContactUs />} />
