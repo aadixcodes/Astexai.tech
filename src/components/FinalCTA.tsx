@@ -1,9 +1,17 @@
 
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useNavigate } from "react-router-dom";
+
 
 const FinalCTA = () => {
   const [ref, isVisible] = useScrollAnimation(0.1);
+
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/contact");
+  };
 
   return (
     <section className="py-10 md:py-20 bg-black dot-bg relative" ref={ref}>
@@ -30,17 +38,8 @@ const FinalCTA = () => {
             <br />
             and precision. Let's make it happen.
           </p>
-          
-          {/* <a 
-            href="#contact" 
-            className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 inline-flex items-center space-x-2 text-lg font-medium"
-          >
-            <span>Book A Call</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a> */}
           <button
+          onClick={handleRedirect}
                 className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200  mb-8 group overflow-hidden"
                 style={{
                   border: "1px solid rgb(255, 177, 104)",
