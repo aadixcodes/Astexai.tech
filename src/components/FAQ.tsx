@@ -17,14 +17,23 @@ const FAQ = () => {
       answer: "Our AI agents automate complex tasks, improve efficiency, and enhance user experiences. We integrate AI solutions into web development, app development, and business processes to create intelligent, scalable, and future-ready solutions."
     },
     {
-      question: "How Does Astex Ensure The Quality Of Its AI Solutions?",
-      answer: "We follow industry best practices, conduct thorough testing, and maintain high standards throughout the development process. Our experienced team ensures that all AI solutions are reliable, secure, and tailored to meet specific client requirements."
+      question: "How Does Astex Ensure The Quality Of Its Projects?",
+      answer: "We follow industry best practices, conduct rigorous testing, and maintain high standards throughout the development process. Each project is managed by experienced professionals to ensure timely delivery, reliability, and quality outcomes."
     },
     {
       question: "Does Astex Offer Customized Solutions?",
-      answer: "Absolutely! We specialize in creating tailored solutions that meet the unique needs of each client. Whether it's AI agents, web development, app development, or graphic design, we customize our approach to align with your specific goals and requirements."
+      answer: "Absolutely! We specialize in creating tailored solutions that meet the unique needs of each client. Whether it's AI agents, web development, app development, or graphic design, we customize our approach to align with your specific goals and business requirements."
+    },
+    {
+      question: "Can Individuals Join Astex As Members Or Interns?",
+      answer: "Yes! Astex actively welcomes students, freelancers, and aspiring professionals to join as members. You'll gain hands-on experience by working on real projects, learn from industry experts, and even earn from paid client projects while expanding your skills."
+    },
+    {
+      question: "How Can I Share Feedback Or Suggestions With Astex?",
+      answer: "We truly value your thoughts and suggestions! You can share your feedback anytime via our official email at astexstf.contact@gmail.com or message us directly on our social media pages. We’re always eager to hear from our community and improve together."
     }
   ];
+  
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -53,7 +62,7 @@ const FAQ = () => {
                 onClick={() => toggleFaq(index)}
                 className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-all duration-300"
               >
-                <span className="text-lg font-medium text-white pr-4">{faq.question}</span>
+                <span className="text-md font-medium text-white pr-4">{faq.question}</span>
                 <ChevronDown 
                   className={`w-6 h-6 text-white/70 transition-all duration-300 flex-shrink-0 ${
                     openFaq === index ? 'rotate-180 text-primary' : ''

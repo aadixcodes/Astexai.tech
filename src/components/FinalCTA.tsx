@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 const FinalCTA = () => {
@@ -74,11 +74,11 @@ const FinalCTA = () => {
         {/* Footer Navigation */}
         <div className={`border-t border-white/10 pt-12 scroll-animate ${isVisible ? 'scroll-animate-in' : 'scroll-animate-out'}`} style={{ transitionDelay: '0.4s' }}>
           <nav className="flex flex-wrap justify-center gap-8 mb-8">
-            <a href="#why-us" className="text-white/60 hover:text-white transition-colors">Why Us</a>
-            <a href="#mission" className="text-white/60 hover:text-white transition-colors">Mission</a>
-            <a href="#works" className="text-white/60 hover:text-white transition-colors">Works</a>
-            <a href="#services" className="text-white/60 hover:text-white transition-colors">Services</a>
-            <a href="#contact" className="text-white/60 hover:text-white transition-colors">Contact</a>
+            <Link to="#why-us" className="text-white/60 hover:text-white transition-colors">Why Us</Link>
+            <Link to="#mission" className="text-white/60 hover:text-white transition-colors">Mission</Link>
+            <Link to="#works" className="text-white/60 hover:text-white transition-colors">Works</Link>
+            <Link to="#services" className="text-white/60 hover:text-white transition-colors">Services</Link>
+            <Link to="/contact" className="text-white/60 hover:text-white transition-colors">Contact</Link>
           </nav>
           
           <p className="text-white/50 text-sm">

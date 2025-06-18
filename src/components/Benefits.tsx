@@ -90,7 +90,7 @@ const Benefits = () => {
         <div className="text-center">
           <button
           onClick={scrollToPricing}
-            className="relative w-full md:w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 mb-8 group overflow-hidden"
+            className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 mb-8 group overflow-hidden"
             style={{
               border: "1px solid rgb(255, 177, 104)",
               background: "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",

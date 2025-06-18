@@ -209,11 +209,12 @@ const RecentWorks = () => {
   };
 
   const stats = [
-    { number: "150k+", label: "Active Users" },
-    { number: "4.9", label: "Rating out of 5" },
-    { number: "99k+", label: "Positive Reviews" },
-    { number: "85k+", label: "Users Satisfied" }
+    { number: "25+", label: "Projects Completed" },
+    { number: "10+", label: "Active Clients" },
+    { number: "4.8", label: "Average Rating" },
+    { number: "20+", label: "Team Members" }
   ];
+  
 
   const currentProject = projects[activeProject];
 

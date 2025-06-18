@@ -3,34 +3,36 @@ import React from 'react';
 
 const Testimonials = () => {
   const mainTestimonial = {
-    name: "Zidane Muharto",
-    role: "Chief Technology Officer",
-    company: "Zapfast",
-    quote: "Astex's Fusion Of AI And Innovation Set Our Project Apart. Their Solutions Are Second To None.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
+    name: "Jay More",
+    role: "Founder & CEO",
+    company: "Ocvision",
+    quote: "Astex delivered a stunning, high-performance website that perfectly reflected our brand identity. Their attention to detail and commitment to deadlines was exceptional. Truly one of the smoothest web development experiences we've had.",
+    image: "/assets/jay2.JPG",
     stats: [
-      { value: "73%", label: "Sales increase in first month" },
-      { value: "5X", label: "Faster customer resolutions" }
+      { value: "41%", label: "boost in product engagement." },
+      { value: "2X", label: "Faster customer resolutions" }
     ]
   };
+  
 
   const companyTestimonials = [
     {
-      company: "CreativEdge",
+      company: "ForexFlow",
       rating: 5,
-      quote: "The creativity and AI expertise from Astex set a new benchmark for our industry. Highly recommended!"
+      quote: "Astex built us a sleek, modern website that’s both fast and beautifully designed. The entire process was smooth and their support post-launch has been outstanding."
     },
     {
-      company: "BrightNest",
+      company: "Airyyrides",
       rating: 5,
-      quote: "Astex's revolutionary AI approach and creative solutions elevated our project. Stellar performance!"
+      quote: "Our new website, developed by Astex, turned out better than we had imagined. It’s clean, responsive, and captures exactly what we wanted for our brand."
     },
     {
-      company: "PrimeCore",
-      rating: 5,
-      quote: "The blend of AI and creativity at Astex transformed our vision into reality. Exceptional support!"
+      company: "ForexCrypto",
+      rating: 4,
+      quote: "The web development team at Astex took our vision and transformed it into a functional, user-friendly platform. Highly professional, creative, and reliable!"
     }
   ];
+  
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
