@@ -50,7 +50,7 @@ const Pricing = () => {
             {/* Basic Static */}
             <div className="bg-[#141414] rounded-xl p-6  transition-all duration-300">
               <h3 className="text-xl font-bold mb-2 text-primary">Basic Static</h3>
-              <p className="text-3xl font-bold mb-4">$75 <span className="text-sm font-normal text-gray-400">(one-time)</span></p>
+              <p className="text-3xl font-bold mb-4">$125<span className="text-sm font-normal text-gray-400">(one-time)</span></p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -119,7 +119,7 @@ const Pricing = () => {
                 POPULAR
               </div>
               <h3 className="text-xl font-bold mb-2 text-primary">Standard Static</h3>
-              <p className="text-3xl font-bold mb-4">$110 <span className="text-sm font-normal text-gray-400">(one-time)</span></p>
+              <p className="text-3xl font-bold mb-4">$175<span className="text-sm font-normal text-gray-400">(one-time)</span></p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -191,7 +191,7 @@ const Pricing = () => {
             {/* Premium Static */}
             <div className="bg-[#141414] rounded-xl p-6 transition-all duration-300">
               <h3 className="text-xl font-bold mb-2 text-primary">Premium Static</h3>
-              <p className="text-3xl font-bold mb-4">$150 <span className="text-sm font-normal text-gray-400">(one-time)</span></p>
+              <p className="text-3xl font-bold mb-4">$250<span className="text-sm font-normal text-gray-400">(one-time)</span></p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -288,7 +288,7 @@ const Pricing = () => {
             {/* Basic Dynamic */}
             <div className="bg-[#141414] rounded-xl p-6 transition-all duration-300">
               <h3 className="text-xl font-bold mb-2 text-primary">Basic Dynamic</h3>
-              <p className="text-3xl font-bold mb-4">$220 <span className="text-sm font-normal text-gray-400">(one-time)</span></p>
+              <p className="text-3xl font-bold mb-4">$285<span className="text-sm font-normal text-gray-400">(one-time)</span></p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -357,7 +357,7 @@ const Pricing = () => {
                 POPULAR
               </div>
               <h3 className="text-xl font-bold mb-2 text-primary">Standard Dynamic</h3>
-              <p className="text-3xl font-bold mb-4">$320 <span className="text-sm font-normal text-gray-400">(one-time)</span></p>
+              <p className="text-3xl font-bold mb-4">$365<span className="text-sm font-normal text-gray-400">(one-time)</span></p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -429,7 +429,7 @@ const Pricing = () => {
             {/* Pro Dynamic */}
             <div className="bg-[#141414] rounded-xl p-6 border transition-all duration-300">
               <h3 className="text-xl font-bold mb-2 text-primary">Pro Dynamic</h3>
-              <p className="text-3xl font-bold mb-4">$430 <span className="text-sm font-normal text-gray-400">(one-time)</span></p>
+              <p className="text-3xl font-bold mb-4">$600<span className="text-sm font-normal text-gray-400">(one-time)</span></p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start">
                   <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -614,15 +614,15 @@ const Pricing = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span>Basic Hosting</span>
-                  <span className="font-bold">$10/month</span>
+                  <span className="font-bold">$15/month</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Premium Hosting</span>
-                  <span className="font-bold">$20/month</span>
+                  <span className="font-bold">$25/month</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Monthly Maintenance</span>
-                  <span className="font-bold">$30/month</span>
+                  <span className="font-bold">$60/month</span>
                 </div>
               </div>
             </div>
@@ -634,15 +634,15 @@ const Pricing = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span>Basic SEO Package</span>
-                  <span className="font-bold">$50/month</span>
+                  <span className="font-bold">$75/month</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Advanced SEO Package</span>
-                  <span className="font-bold">$100/month</span>
+                  <span className="font-bold">$120/month</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Content Marketing</span>
-                  <span className="font-bold">$150/month</span>
+                  <span className="font-bold">$200/month</span>
                 </div>
               </div>
             </div>
@@ -654,7 +654,7 @@ const Pricing = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span>E-commerce Integration</span>
-                  <span className="font-bold">From $200</span>
+                  <span className="font-bold">From $500</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span>Custom Web Application</span>

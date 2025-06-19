@@ -22,7 +22,7 @@ const handleRedirect = () => {
     {
       name: "Basic Static",
       description: "Ideal for simple online presence.",
-      price: "$75",
+      price: "$125",
       period: "(one-time)",
       features: [
         "Up to 5 pages",
@@ -36,7 +36,7 @@ const handleRedirect = () => {
     {
       name: "Standard Static",
       description: "Perfect for small businesses.",
-      price: "$110",
+      price: "$175",
       period: "(one-time)",
       features: [
         "Up to 8 pages",
@@ -51,7 +51,7 @@ const handleRedirect = () => {
     {
       name: "Premium Static",
       description: "For professional websites with advanced features.",
-      price: "$150",
+      price: "$250",
       period: "(one-time)",
       features: [
         "12+ pages",

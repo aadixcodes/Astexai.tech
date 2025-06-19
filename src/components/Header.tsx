@@ -7,13 +7,11 @@ const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleMobileLinkClick = () => {
-    setIsMobileMenuOpen(false);
-  };
   
   const navigate = useNavigate();
 
   const handleSectionClick = (id) => {
+    setIsMobileMenuOpen(false);
     if (window.location.pathname !== "/") {
       navigate("/", { state: { scrollTo: id } });
     } else {
@@ -155,6 +153,9 @@ const Header = () => {
           </div>
         </div>
 
+
+
+
         {/* Mobile Menu Overlay */}
         <div 
           className={`fixed inset-0 bg-black/90 backdrop-blur-sm z-40 md:hidden transition-all duration-500 ${
@@ -172,49 +173,42 @@ const Header = () => {
               <button 
                 onClick={() => handleSectionClick("why-us")}
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
               >
                 Why Us
               </button>
               <button 
                 onClick={() => handleSectionClick("mission")}
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
               >
                 Mission
               </button>
               <button 
                 onClick={() => handleSectionClick("works")} 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
               >
                 Works
               </button>
               <button 
                 onClick={() => handleSectionClick("services")} 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
               >
                 Services
               </button>
               <Link
                 to="/contact" 
-                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
+                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20 text-center"
               >
                 Contact Us
               </Link>
               <Link
-                href="/terms-and-conditions" 
-                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
+                to="/terms-and-conditions" 
+                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20 text-center"
               >
                 Terms & Conditions
               </Link>
               <Link
-                href="/pricing" 
-                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
-                onClick={handleMobileLinkClick}
+                to="/pricing" 
+                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20 text-center"
               >
                 Our Pricing
               </Link>
@@ -223,7 +217,6 @@ const Header = () => {
                 <Link
                   to="/contact" 
                   className="relative block w-full bg-[#0d0d0d] text-[#dedede] px-6 py-4 rounded-lg transition-all duration-300 text-center font-semibold hover:scale-105"
-                  onClick={handleMobileLinkClick}
                 >
                   {/* Glow Effect */}
                   <div 
