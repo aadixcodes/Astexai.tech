@@ -89,6 +89,7 @@ const Header = () => {
                   
                   {isDropdownOpen && (
                     <div className="absolute top-full left-0 mt-2 w-48 bg-[#050505] backdrop-blur-sm border border-white/10 rounded-lg shadow-xl z-50">
+                      <Link to="/influencers-marketing" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Influencer Marketing</Link>
                       <Link to="/contact" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Contact Us</Link>
                       <Link to="/terms-and-conditions" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Terms & Conditions</Link>
                       <Link to="/pricing" className="block px-4 py-3 text-[#afafaf] hover:text-white hover:bg-white/5 transition-colors">Our Pricing</Link>
@@ -156,6 +157,11 @@ const Header = () => {
 
 
 
+
+
+
+
+
         {/* Mobile Menu Overlay */}
         <div 
           className={`fixed inset-0 bg-black/90 backdrop-blur-sm z-40 md:hidden transition-all duration-500 ${
@@ -194,6 +200,12 @@ const Header = () => {
               >
                 Services
               </button>
+              <Link
+                to="/influencers-marketing" 
+                className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20 text-center"
+              >
+                Influencer Marketing
+              </Link>
               <Link
                 to="/contact" 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20 text-center"

@@ -12,6 +12,8 @@ import Pricing from "./pages/Pricing";
 import JoinUs from "./pages/JoinUs";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import InfluencersMarketing from "./pages/influencers-marketing";
+import ScheduleMeet from "./pages/SheduleMeeting";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +52,8 @@ const App = () => {
             <Route path="/terms-and-conditions" element={<TermsConditions />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/join-our-team" element={<JoinUs />} />
+            <Route path="/influencers-marketing" element={<InfluencersMarketing />} />
+            <Route path="/book-a-meeting" element={<ScheduleMeet />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

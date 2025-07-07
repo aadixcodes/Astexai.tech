@@ -71,11 +71,11 @@ const Services = () => {
       icon: "https://framerusercontent.com/images/0EJSat3AKzJRdD6xxuuiwMg63y4.svg" 
     },
     { 
-      name: "API Security", 
+      name: "Influencer Marketing", 
       icon: "https://framerusercontent.com/images/FuYRMfKxtC6kJDq6v671cgsNGY.svg" 
     },
     { 
-      name: "Real-Time", 
+      name: "Brand Collaborations", 
       icon: "https://framerusercontent.com/images/QKgOGYR4rTNLO3KDEZLPDU6wvU.svg" 
     },
     { 

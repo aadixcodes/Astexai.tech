@@ -7,7 +7,7 @@ const Pricing = () => {
   const redirectToWhatsApp = (plan: string, type: string) => {
     const message = `Hi, I'm interested in the ${plan} ${type} Website plan. Can you provide more details?`;
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/919755562101?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/919098343508?text=${encodedMessage}`, "_blank");
   };
 
   return (
@@ -35,7 +35,7 @@ const Pricing = () => {
           <div className="flex items-center justify-center mb-10">
             <div className="flex items-center">
               <div className="h-0.5 w-16 bg-orange-500 mr-4"></div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center">
                 Static Website Plans
               </h2>
               <div className="h-0.5 w-16 bg-orange-500 ml-4"></div>
@@ -273,7 +273,7 @@ const Pricing = () => {
           <div className="flex items-center justify-center mb-10">
             <div className="flex items-center">
               <div className="h-0.5 w-16 bg-orange-500 mr-4"></div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center">
                 Dynamic Website Plans
               </h2>
               <div className="h-0.5 w-16 bg-orange-500 ml-4"></div>
@@ -511,7 +511,7 @@ const Pricing = () => {
           <div className="flex items-center justify-center mb-10">
             <div className="flex items-center">
               <div className="h-0.5 w-16 bg-orange-500 mr-4"></div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center">
                 Plan Comparison
               </h2>
               <div className="h-0.5 w-16 bg-orange-500 ml-4"></div>
@@ -599,7 +599,7 @@ const Pricing = () => {
           <div className="flex items-center justify-center mb-10">
             <div className="flex items-center">
               <div className="h-0.5 w-16 bg-orange-500 mr-4"></div>
-              <h2 className="text-2xl md:text-3xl font-bold text-primary">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center">
                 Additional Services
               </h2>
               <div className="h-0.5 w-16 bg-orange-500 ml-4"></div>

@@ -154,11 +154,11 @@ const ContactUs = () => {
                   <Label htmlFor="service" className="text-white mb-2 block">Select Service <span className="text-primary">*</span></Label>
                   <select id="service" className="w-full h-10 px-3 py-2 bg-astex-gray/50 border border-white/20 rounded-md text-white focus:outline-none" {...register('service', { required: 'Please select a service' })}>
                     <option value="">Select Your Service</option>
-                    <option value="ai-agents">AI Agents</option>
                     <option value="web-development">Web Development</option>
                     <option value="app-development">App Development</option>
+                    <option value="ai-agents">AI Agents</option>
+                    <option value="influencer-marketing">Influencers Marketing</option>
                     <option value="graphic-design">Graphic Design</option>
-                    <option value="automation">Automation</option>
                   </select>
                   {errors.service && <p className="text-red-400 text-sm mt-1">{errors.service.message}</p>}
                 </div>
@@ -167,10 +167,10 @@ const ContactUs = () => {
                   <Label htmlFor="budget" className="text-white mb-2 block">Project Budget <span className="text-primary">*</span></Label>
                   <select id="budget" className="w-full h-10 px-3 py-2 bg-astex-gray/50 border border-white/20 rounded-md text-white focus:outline-none" {...register('budget', { required: 'Please select a budget range' })}>
                     <option value="">Select Your Range</option>
-                    <option value="5k-10k">$5K - $10K</option>
-                    <option value="10k-25k">$10K - $25K</option>
-                    <option value="25k-50k">$25K - $50K</option>
-                    <option value="50k+">$50K+</option>
+                    <option value="$100-$150">$100 - $150</option>
+                    <option value="$150-$200">$150 - $200</option>
+                    <option value="$200-$300">$200 - $300</option>
+                    <option value="$300+">$300+</option>
                   </select>
                   {errors.budget && <p className="text-red-400 text-sm mt-1">{errors.budget.message}</p>}
                 </div>
@@ -243,7 +243,7 @@ const ContactUs = () => {
                 </svg>
               </div>
               <h3 className="text-white font-semibold mb-2">Phone</h3>
-              <p className="text-white/70 text-sm">+91 9755562101</p>
+              <p className="text-white/70 text-sm">+91 9098343508</p>
             </div>
 
             <div className="text-center">

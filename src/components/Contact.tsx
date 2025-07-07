@@ -53,8 +53,8 @@ const handleRedirect = () => {
             </div>
             <h3 className="text-white font-semibold mb-1 md:mb-2 text-sm md:text-base">Phone</h3>
             <p className="text-white/70 text-xs md:text-sm break-words overflow-hidden">
-              <a href="tel:9755562101" className="hover:text-primary transition-colors">
-                +91 9755562101
+              <a href="tel:9098343508" className="hover:text-primary transition-colors">
+                +91 9098343508
               </a>
             </p>
           </div>

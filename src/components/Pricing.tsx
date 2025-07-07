@@ -8,7 +8,7 @@ const Pricing = () => {
   const redirectToWhatsApp = (plan: string, type: string) => {
     const message = `Hi, I'm interested in the ${plan} ${type} Website plan. Can you provide more details?`;
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/919755562101?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/919098343508?text=${encodedMessage}`, "_blank");
   };
 
 
