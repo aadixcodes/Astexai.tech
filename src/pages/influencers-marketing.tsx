@@ -858,7 +858,7 @@ const InfluencersMarketing = () => {
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="flex-1">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Let’s Launch Your<span className="text-primary">Influencer Campaign</span> Today
+                  Let’s Launch Your <span className="text-primary">Influencer Campaign</span> Today
                 </h2>
                 <p className="text-white/70 text-lg max-w-2xl">
                   Ready to take your brand story to millions? Partner with Astex and let our influencer marketing specialists build a campaign that drives real, measurable impact.
