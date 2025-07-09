@@ -49,7 +49,7 @@ const NotFound = () => {
             We can't find the page you're looking for. It might have been moved or doesn't exist.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
                 className="relative w-[11rem] px-4 py-2 rounded-[7px] transition-all duration-200  mb-8 group overflow-hidden"
                 style={{
@@ -84,7 +84,7 @@ const NotFound = () => {
         </div>
       </section>
 
-      <style jsx global>{`
+      <style>{`
         @keyframes float {
           0%, 100% {
             transform: translateY(0) translateX(0);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const mainServices = [
@@ -162,6 +163,36 @@ const Services = () => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="flex justify-center mt-14">
+        <div className="text-center">
+          <Link
+            to="/our-services"
+            className="relative w-[12rem] px-4 py-2 rounded-[7px] transition-all duration-200 mb-8 group overflow-hidden flex items-center justify-center gap-2"
+            style={{
+              border: "1px solid rgb(255, 177, 104)",
+              background: "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+            }}
+          >
+            <span className="text-white font-medium">View all services</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-white transition-transform group-hover:translate-x-1"
+            >
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+            <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300"></div>
+          </Link>
+        </div>
         </div>
       </div>
     </section>

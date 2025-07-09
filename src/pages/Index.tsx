@@ -26,7 +26,7 @@ const Index = () => {
     }
   }, [location]);
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-black dot-bg">
       <Header />
       <Hero />
       <Benefits />

@@ -55,6 +55,9 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    background-image: radial-gradient(circle, rgba(255,138,0,0.15) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: dotMove 20s linear infinite;
   }
 
   html {

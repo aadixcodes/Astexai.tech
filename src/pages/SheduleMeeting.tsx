@@ -1,286 +1,430 @@
-import React, { useState } from 'react';
-import { Video, Clock, ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  Clock,
+  Video,
+  Globe,
+  Plus,
+} from "lucide-react";
+import Header from "../components/Header";
+import FinalCTA from "@/components/FinalCTA";
 
-const ScheduleMeet = () => {
+interface ScheduleMeetProps {}
+
+const ScheduleMeet: React.FC<ScheduleMeetProps> = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [selectedTime, setSelectedTime] = useState<string>("");
+  const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    countryCode: '+91',
-    notes: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    country: "India",
+    note: "",
   });
-  const [currentMonth, setCurrentMonth] = useState(new Date());
 
-  // Generate available dates (next 14 days)
-  const generateAvailableDates = () => {
-    const dates = [];
-    const today = new Date();
-    for (let i = 0; i < 14; i++) {
-      const date = new Date();
-      date.setDate(today.getDate() + i);
-      dates.push(date);
+  // Generate time slots from 10:00 AM to 10:00 PM
+  const generateTimeSlots = () => {
+    const slots = [];
+    for (let hour = 10; hour < 22; hour++) {
+      const time12 = hour > 12 ? hour - 12 : hour;
+      const ampm = hour >= 12 ? "PM" : "AM";
+      const displayHour = time12 === 0 ? 12 : time12;
+
+      slots.push(`${displayHour}:00 ${ampm}`);
+      if (hour < 21) {
+        // Don't add 30 min slot for 9:30 PM
+        slots.push(`${displayHour}:30 ${ampm}`);
+      }
     }
-    return dates;
+    return slots;
   };
 
-  // Available time slots
-  const timeSlots = [
-    '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
-    '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM'
-  ];
+  const timeSlots = generateTimeSlots();
+
+  const getDaysInMonth = (date: Date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const startingDayOfWeek = firstDay.getDay();
+
+    const days = [];
+
+    // Add empty cells for days before the first day of the month
+    for (let i = 0; i < startingDayOfWeek; i++) {
+      days.push(null);
+    }
+
+    // Add all days of the month
+    for (let day = 1; day <= daysInMonth; day++) {
+      days.push(new Date(year, month, day));
+    }
+
+    return days;
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  const formatSelectedDateTime = () => {
+    if (!selectedDate || !selectedTime) return "";
+    const dateStr = selectedDate.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+    return `${dateStr}, ${selectedTime}`;
+  };
 
   const handleDateClick = (date: Date) => {
     setSelectedDate(date);
-    setSelectedTime(null);
+    setSelectedTime("");
+    setShowForm(false);
   };
 
   const handleTimeClick = (time: string) => {
     setSelectedTime(time);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  const handleContinue = () => {
+    if (selectedDate && selectedTime) {
+      setShowForm(true);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleFormSubmit = () => {
     // Handle form submission logic here
-    console.log('Meeting scheduled:', { selectedDate, selectedTime, ...formData });
-    // You would typically send this data to your backend
+    if (formData.firstName && formData.lastName && formData.email) {
+      console.log("Meeting booked:", { selectedDate, selectedTime, formData });
+      // Reset form or show success message
+    }
   };
 
-  const availableDates = generateAvailableDates();
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const navigateMonth = (direction: "prev" | "next") => {
+    const newDate = new Date(currentDate);
+    if (direction === "prev") {
+      newDate.setMonth(newDate.getMonth() - 1);
+    } else {
+      newDate.setMonth(newDate.getMonth() + 1);
+    }
+    setCurrentDate(newDate);
+  };
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  const days = getDaysInMonth(currentDate);
 
   return (
-    <div className="min-h-screen bg-black dot-bg py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border border-white/10 rounded-2xl overflow-hidden">
-          {/* Header Section */}
-          <div className="p-8 border-b border-white/10">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-              <div className="mb-6 md:mb-0">
-                <h1 className="text-3xl font-bold text-white">Aditya Patel</h1>
-                <p className="text-white/80 mt-2">30-Minute Meeting</p>
-                <div className="flex items-center mt-4 space-x-4">
-                  <div className="flex items-center text-white/70">
-                    <Video className="w-5 h-5 mr-2 text-primary" />
-                    <span className="text-sm">Video link will be sent by email</span>
+    <>
+    <section className="">
+      <Header />
+      <div className="min-h-[30rem] w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-[10rem] text-white flex flex-col lg:flex-row">
+        {/* Left Side - Meeting Details */}
+        <div className="w-full lg:w-1/3 p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-gray-800">
+          <div className="mb-6">
+            <button className="text-gray-400 hover:text-white mb-4">
+              <ChevronLeft size={24} />
+            </button>
+            <h2 className="text-2xl font-semibold mb-2">Aditya Patel</h2>
+            <h3 className="text-xl mb-4">30-minute meeting</h3>
+
+            <div className="space-y-3 text-gray-300">
+              <div className="flex items-center space-x-3">
+                <Video size={16} />
+                <span>Video link will be sent by email</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Clock size={16} />
+                <span>30 mins</span>
+              </div>
+              {selectedDate && selectedTime && (
+                <>
+                  <div className="flex items-center space-x-3">
+                    <Calendar size={16} />
+                    <span>{formatSelectedDateTime()}</span>
                   </div>
-                  <div className="flex items-center text-white/70">
-                    <Clock className="w-5 h-5 mr-2 text-primary" />
-                    <span className="text-sm">30 mins</span>
+                  <div className="flex items-center space-x-3">
+                    <Globe size={16} />
+                    <span>Asia/Calcutta timezone</span>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side - Calendar/Time Slots/Form */}
+        <div
+          className={`w-full ${
+            showForm ? "lg:w-2/3" : selectedDate ? "lg:w-2/3" : "lg:w-2/3"
+          } p-6 lg:p-8`}
+        >
+          {!showForm ? (
+            <div className="flex flex-col lg:flex-row h-full">
+              {/* Calendar */}
+              <div className={`${selectedDate ? "w-full lg:w-1/2" : "w-full"} lg:pr-4`}>
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-xl font-semibold">
+                      {monthNames[currentDate.getMonth()]}{" "}
+                      {currentDate.getFullYear()}
+                    </h3>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => navigateMonth("prev")}
+                        className="p-2 hover:bg-gray-800 rounded"
+                      >
+                        <ChevronLeft size={20} />
+                      </button>
+                      <button
+                        onClick={() => navigateMonth("next")}
+                        className="p-2 hover:bg-gray-800 rounded"
+                      >
+                        <ChevronRight size={20} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Calendar Grid */}
+                  <div className="grid grid-cols-7 gap-1">
+                    {dayNames.map((day) => (
+                      <div
+                        key={day}
+                        className="text-center text-gray-400 text-sm py-2"
+                      >
+                        {day}
+                      </div>
+                    ))}
+                    {days.map((day, index) => (
+                      <div key={index} className="aspect-square">
+                        {day && (
+                          <button
+                            onClick={() => handleDateClick(day)}
+                            className={`w-full h-full flex items-center justify-center text-sm rounded hover:bg-gray-800 transition-colors ${
+                              selectedDate &&
+                              day.toDateString() === selectedDate.toDateString()
+                                ? "bg-white text-black"
+                                : day.toDateString() ===
+                                  new Date().toDateString()
+                                ? "bg-[#FF8A00] text-black"
+                                : "text-white"
+                            }`}
+                          >
+                            {day.getDate()}
+                          </button>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
+
+                {/* Timezone */}
+                <div className="mt-4">
+                  <label className="block text-sm text-gray-400 mb-2">
+                    Timezone
+                  </label>
+                  <select className="w-full bg-gray-900 border border-gray-700 rounded px-3 py-2 text-white">
+                    <option>Asia/Calcutta - 5:24 PM</option>
+                  </select>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <button 
-                  onClick={() => setCurrentMonth(new Date(currentMonth.setMonth(currentMonth.getMonth() - 1)))}
-                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+
+              {/* Time Slots */}
+              {selectedDate && (
+                <div className="w-full lg:w-1/2 mt-6 lg:mt-0 lg:pl-4 border-t lg:border-t-0 lg:border-l border-gray-800 pt-6 lg:pt-0">
+                  <h3 className="text-xl font-semibold mb-4">
+                    {formatDate(selectedDate)}
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto">
+                    {timeSlots.map((time) => (
+                      <button
+                        key={time}
+                        onClick={() => handleTimeClick(time)}
+                        className={`w-full text-center px-4 py-3 rounded border transition-colors ${
+                          selectedTime === time
+                            ? "bg-[#FF8A00] text-black border-[#FF8A00]"
+                            : "border-gray-700 hover:border-[#FF8A00] hover:bg-gray-800"
+                        }`}
+                      >
+                        {time}
+                      </button>
+                    ))}
+                  </div>
+
+                  {selectedTime && (
+                    <button
+                      onClick={handleContinue}
+                      className="w-full mt-6 bg-[#FF8A00] text-black py-3 px-6 rounded font-semibold hover:bg-[#e67a00] transition-colors"
+                    >
+                      Continue
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+          ) : (
+            /* Form */
+            <div className="max-w-lg mx-auto lg:mx-0">
+              <h3 className="text-xl font-semibold mb-6">Your information</h3>
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="First name*"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      className="w-full bg-transparent border border-gray-700 rounded px-3 py-3 text-white placeholder-gray-400 focus:border-[#FF8A00] focus:outline-none"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Last name*"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      className="w-full bg-transparent border border-gray-700 rounded px-3 py-3 text-white placeholder-gray-400 focus:border-[#FF8A00] focus:outline-none"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email address*"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full bg-transparent border border-gray-700 rounded px-3 py-3 text-white placeholder-gray-400 focus:border-[#FF8A00] focus:outline-none"
+                    required
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="md:col-span-1">
+                    <select
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      className="w-full bg-transparent border border-gray-700 rounded px-3 py-3 text-white focus:border-[#FF8A00] focus:outline-none"
+                    >
+                      <option value="India">India</option>
+                      <option value="US">US</option>
+                      <option value="UK">UK</option>
+                    </select>
+                  </div>
+                  <div className="md:col-span-2">
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone number"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full bg-transparent border border-gray-700 rounded px-3 py-3 text-white placeholder-gray-400 focus:border-[#FF8A00] focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="text-[#FF8A00] hover:text-[#e67a00] flex items-center space-x-2"
                 >
-                  <ChevronLeft className="w-5 h-5 text-white" />
+                  <Plus size={16} />
+                  <span>Add another participant</span>
                 </button>
-                <span className="text-white font-medium">
-                  {currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}
-                </span>
-                <button 
-                  onClick={() => setCurrentMonth(new Date(currentMonth.setMonth(currentMonth.getMonth() + 1)))}
-                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+
+                <div>
+                  <textarea
+                    name="note"
+                    placeholder="Add note"
+                    value={formData.note}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full bg-transparent border border-gray-700 rounded px-3 py-3 text-white placeholder-gray-400 focus:border-[#FF8A00] focus:outline-none resize-none"
+                  />
+                  <div className="text-right text-sm text-gray-400 mt-1">
+                    {formData.note.length}/1000
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-2">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    className="mt-1 accent-[#FF8A00]"
+                    required
+                  />
+                  <label htmlFor="terms" className="text-sm text-gray-400">
+                    Yes, I agree to the{" "}
+                    <a href="#" className="text-[#FF8A00] hover:underline">
+                      Terms of Service
+                    </a>{" "}
+                    and the{" "}
+                    <a href="#" className="text-[#FF8A00] hover:underline">
+                      Data Policy
+                    </a>{" "}
+                    of Brevo Meetings
+                  </label>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleFormSubmit}
+                  className="w-full bg-[#FF8A00] text-black py-3 px-6 rounded font-semibold hover:bg-[#e67a00] transition-colors"
                 >
-                  <ChevronRight className="w-5 h-5 text-white" />
+                  Book now
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Main Content */}
-          <div className="p-8">
-            {!selectedDate ? (
-              // Date Selection
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-4">
-                {availableDates.map((date, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleDateClick(date)}
-                    className={`p-4 rounded-lg flex flex-col items-center transition-all ${
-                      date.toDateString() === new Date().toDateString()
-                        ? 'bg-primary/20 border border-primary'
-                        : 'bg-white/5 hover:bg-white/10 border border-white/10'
-                    }`}
-                  >
-                    <span className="text-white font-medium">
-                      {date.toLocaleString('default', { weekday: 'short' })}
-                    </span>
-                    <span className="text-white text-xl font-bold mt-1">
-                      {date.getDate()}
-                    </span>
-                    <span className="text-white/50 text-xs mt-1">
-                      {date.toLocaleString('default', { month: 'short' })}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            ) : !selectedTime ? (
-              // Time Selection
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-xl font-bold text-white">
-                    {selectedDate.toLocaleString('default', { weekday: 'long', month: 'long', day: 'numeric' })}
-                  </h2>
-                  <button 
-                    onClick={() => setSelectedDate(null)}
-                    className="text-primary hover:text-primary/80 transition-colors"
-                  >
-                    Change date
-                  </button>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {timeSlots.map((time, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleTimeClick(time)}
-                      className={`py-3 px-4 rounded-lg text-center transition-all ${
-                        selectedTime === time
-                          ? 'bg-primary text-white'
-                          : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
-                      }`}
-                    >
-                      {time}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              // Form Section
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold text-white">
-                      {selectedDate.toLocaleString('default', { weekday: 'long', month: 'long', day: 'numeric' })}
-                    </h2>
-                    <p className="text-primary">{selectedTime}</p>
-                  </div>
-                  <button 
-                    onClick={() => setSelectedTime(null)}
-                    className="text-primary hover:text-primary/80 transition-colors"
-                  >
-                    Change time
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-white/80 mb-1">
-                      First Name <span className="text-primary">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-white/80 mb-1">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
-                    Email Address <span className="text-primary">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  />
-                </div>
-
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="col-span-1">
-                    <label htmlFor="countryCode" className="block text-sm font-medium text-white/80 mb-1">
-                      Country Code
-                    </label>
-                    <select
-                      id="countryCode"
-                      name="countryCode"
-                      value={formData.countryCode}
-                      onChange={handleInputChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    >
-                      <option value="+91">India (+91)</option>
-                      <option value="+1">USA (+1)</option>
-                      <option value="+44">UK (+44)</option>
-                      <option value="+61">Australia (+61)</option>
-                    </select>
-                  </div>
-                  <div className="col-span-2">
-                    <label htmlFor="phone" className="block text-sm font-medium text-white/80 mb-1">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="notes" className="block text-sm font-medium text-white/80 mb-1">
-                    Notes / Message
-                  </label>
-                  <textarea
-                    id="notes"
-                    name="notes"
-                    rows={3}
-                    value={formData.notes}
-                    onChange={handleInputChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  />
-                </div>
-
-                <div className="pt-4">
-                  <button
-                    type="submit"
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
-                  >
-                    <Check className="w-5 h-5" />
-                    Book Now
-                  </button>
-                  <p className="text-white/60 text-sm mt-3 text-center">
-                    You will receive a confirmation by email.
-                  </p>
-                </div>
-              </form>
-            )}
-          </div>
+          )}
         </div>
       </div>
-    </div>
+      <FinalCTA />
+      </section>
+    </>
   );
 };
 

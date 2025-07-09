@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import Header from "../components/Header";
+import FinalCTA from "@/components/FinalCTA";
+
 import {
   Instagram,
   Users,
@@ -13,7 +15,6 @@ import {
   Search,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import FinalCTA from "@/components/FinalCTA";
 
 const InfluencersMarketing = () => {
   const [ref, isVisible] = useScrollAnimation(0.1);
@@ -117,144 +118,144 @@ const InfluencersMarketing = () => {
       image: "/assets/influencersprofile/profile2.jpg",
     },
     {
-      username: "wahindori",
-      followers: "233K",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-    },
-    {
-      username: "iloveindore",
-      followers: "221K",
-      image: "/assets/influencersprofile/profile4.jpg",
-    },
-    {
-      username: "indorigram_",
-      followers: "219K",
-      image: "/assets/influencersprofile/profile5.jpg",
-    },
-    {
-      username: "indoreshorts",
-      followers: "204K",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-    },
-    {
-      username: "indoremerijaan.in",
-      followers: "237K",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-    },
-    {
-      username: "incredibleindore",
-      followers: "191K",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-    },
-    {
-      username: "eknoindore",
-      followers: "187K",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
-    },
-    {
-      username: "indoreexplorer_",
-      followers: "182K",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-    },
-    {
-      username: "helloindore_",
-      followers: "130K",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    },
-    {
-      username: "bhiyaooo",
-      followers: "116K",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-    },
-    {
-      username: "indoreofficials",
-      followers: "103K",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-    },
-    {
-      username: "indorecitypage",
-      followers: "103K",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-    },
-    {
-      username: "indore_meri_jaan_in",
-      followers: "96.4K",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9",
-    },
-    {
-      username: "ourindore",
-      followers: "94.1K",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-    },
-    {
-      username: "indore_info",
-      followers: "80.5K",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-    },
-    {
-      username: "indorereelgramofficial",
-      followers: "79K",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
-    },
-    {
-      username: "indorilok",
-      followers: "73.8K",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
-    },
-    {
-      username: "indorivibes_",
-      followers: "70.6K",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-    },
-    {
-      username: "nts_indore",
-      followers: "62.8K",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    },
-    {
-      username: "indori_days",
-      followers: "60.2K",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-    },
-    {
-      username: "indorijanta_",
-      followers: "52.2K",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
-    },
-    {
-      username: "indore_city_update",
-      followers: "50.7K",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-    },
-    {
-      username: "indore.public",
-      followers: "46.6K",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9",
-    },
-    {
-      username: "tbhindore",
-      followers: "46.5K",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
-    },
-    {
-      username: "indori_thilwe09",
-      followers: "42K",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
-    },
-    {
       username: "Waah_indore",
       followers: "30K",
       image: "/assets/influencersprofile/profile3.jpg",
     },
     {
+      username: "wahindori",
+      followers: "233K",
+      image: "/assets/influencersprofile/profile4.jpg",
+    },
+    {
+      username: "iloveindore",
+      followers: "221K",
+      image: "/assets/influencersprofile/profile5.jpg",
+    },
+    {
+      username: "indorigram_",
+      followers: "219K",
+      image: "/assets/influencersprofile/profile6.jpg",
+    },
+    {
+      username: "indoreshorts",
+      followers: "204K",
+      image: "/assets/influencersprofile/profile7.jpg",
+    },
+    {
+      username: "indoremerijaan.in",
+      followers: "237K",
+      image: "/assets/influencersprofile/profile8.jpg",
+    },
+    {
+      username: "incredibleindore",
+      followers: "191K",
+      image: "/assets/influencersprofile/profile9.jpg",
+    },
+    {
+      username: "eknoindore",
+      followers: "187K",
+      image: "/assets/influencersprofile/profile10.jpg",
+    },
+    {
+      username: "indoreexplorer_",
+      followers: "182K",
+      image: "/assets/influencersprofile/profile11.jpg",
+    },
+    {
+      username: "helloindore_",
+      followers: "130K",
+      image: "/assets/influencersprofile/profile12.jpg",
+    },
+    {
+      username: "bhiyaooo",
+      followers: "116K",
+      image: "/assets/influencersprofile/profile13.jpg",
+    },
+    {
+      username: "indoreofficials_",
+      followers: "103K",
+      image: "/assets/influencersprofile/profile14.jpg",
+    },
+    {
+      username: "indorecitypage",
+      followers: "103K",
+      image: "/assets/influencersprofile/profile15.jpg",
+    },
+    {
+      username: "indore_meri_jaan_in",
+      followers: "96.4K",
+      image: "/assets/influencersprofile/profile16.jpg",
+    },
+    {
+      username: "ourindore__",
+      followers: "94.1K",
+      image: "/assets/influencersprofile/profile17.jpg",
+    },
+    {
+      username: "indore_info",
+      followers: "80.5K",
+      image: "/assets/influencersprofile/profile18.jpg",
+    },
+    {
+      username: "indorereelgramofficial",
+      followers: "79K",
+      image: "/assets/influencersprofile/profile19.jpg",
+    },
+    {
+      username: "indorilok",
+      followers: "73.8K",
+      image: "/assets/influencersprofile/profile20.jpg",
+    },
+    {
+      username: "indorivibes_",
+      followers: "70.6K",
+      image: "/assets/influencersprofile/profile21.jpg",
+    },
+    {
+      username: "nts_indore",
+      followers: "62.8K",
+      image: "/assets/influencersprofile/profile22.jpg",
+    },
+    {
+      username: "indori_days",
+      followers: "60.2K",
+      image: "/assets/influencersprofile/profile23.jpg",
+    },
+    {
+      username: "indorijanta_",
+      followers: "52.2K",
+      image: "/assets/influencersprofile/profile24.jpg",
+    },
+    {
+      username: "indore_city_update",
+      followers: "50.7K",
+      image: "/assets/influencersprofile/profile25.jpg",
+    },
+    {
+      username: "indore.public",
+      followers: "46.6K",
+      image: "/assets/influencersprofile/profile26.jpg",
+    },
+    {
+      username: "tbhindore",
+      followers: "46.5K",
+      image: "/assets/influencersprofile/profile27.jpg",
+    },
+    {
+      username: "indori_thilwe09",
+      followers: "42K",
+      image: "/assets/influencersprofile/profile28.jpg",
+    },
+    {
       username: "oye_itz.indore",
       followers: "19.1K",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+      image: "/assets/influencersprofile/profile29.jpg",
     },
     {
       username: "mr_cool_indori",
       followers: "21K",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+      image: "/assets/influencersprofile/profile30.jpg",
     },
   ];
 
@@ -441,10 +442,10 @@ const InfluencersMarketing = () => {
           {/* Stats Grid - More Beautiful Layout */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {[
-              { value: "11K+", label: "Active Users" },
-              { value: "5k", label: "Campaigns" },
-              { value: "30+", label: "Categories" },
-              { value: "11k+", label: "Creators" },
+              { value: "28M+", label: "Active Users" },
+              { value: "500+", label: "Creators" },
+              { value: "100M+", label: "Reach" },
+              { value: "40+", label: "Campaigns" },
             ].map((stat, index) => (
               <div
                 key={index}

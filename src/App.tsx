@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import InfluencersMarketing from "./pages/influencers-marketing";
 import ScheduleMeet from "./pages/SheduleMeeting";
+import OurServices from "./pages/OurServices";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => {
             <Route path="/join-our-team" element={<JoinUs />} />
             <Route path="/influencers-marketing" element={<InfluencersMarketing />} />
             <Route path="/book-a-meeting" element={<ScheduleMeet />} />
+            <Route path="/our-services" element={<OurServices />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

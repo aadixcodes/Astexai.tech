@@ -75,7 +75,7 @@ const Header = () => {
                 <button onClick={() => handleSectionClick("why-us")} className="text-[#afafaf] hover:text-white transition-colors">Why Us</button>
                 <button onClick={() => handleSectionClick("mission")} className="text-[#afafaf] hover:text-white transition-colors">Mission</button>
                 <button onClick={() => handleSectionClick("works")} className="text-[#afafaf] hover:text-white transition-colors">Works</button>
-                <button onClick={() => handleSectionClick("services")} className="text-[#afafaf] hover:text-white transition-colors">Services</button>
+                <Link to = "/our-services"  className="text-[#afafaf] hover:text-white transition-colors">Services</Link>
                 
                 {/* Pages Dropdown */}
                 <div className="relative dropdown-container">
@@ -194,12 +194,12 @@ const Header = () => {
               >
                 Works
               </button>
-              <button 
-                onClick={() => handleSectionClick("services")} 
+              <Link 
+                to = "/our-services" 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20"
               >
                 Services
-              </button>
+              </Link>
               <Link
                 to="/influencers-marketing" 
                 className="block px-4 py-4 text-[#afafaf] hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20 text-center"
