@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import Header from '../components/Header';
-import FinalCTA from '../components/FinalCTA';
+// export default JoinUs;
+import React, { useState, useEffect } from "react";
+import Header from "../components/Header";
+import FinalCTA from "../components/FinalCTA";
 
 interface FormData {
   name: string;
@@ -43,8 +44,46 @@ const JoinUs: React.FC = () => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [isStepValid, setIsStepValid] = useState<boolean>(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  // Check if current step is valid
+  useEffect(() => {
+    let valid = false;
+    switch (formStep) {
+      case 1:
+        valid =
+          !!formData.name &&
+          !!formData.email &&
+          !!formData.college &&
+          !!formData.age &&
+          !!formData.year &&
+          !!formData.gender;
+        break;
+      case 2:
+        valid = !!formData.type;
+        break;
+      case 3:
+        if (showTechFields) {
+          valid =
+            !!formData.github && !!formData.skills && !!formData.experience;
+        } else if (showNonTechFields) {
+          valid =
+            !!formData.interests &&
+            !!formData.strengths &&
+            !!formData.relevantProjects;
+        }
+        break;
+      default:
+        valid = false;
+    }
+    setIsStepValid(valid);
+  }, [formData, formStep, showTechFields, showNonTechFields]);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -113,14 +152,22 @@ const JoinUs: React.FC = () => {
     setFormStep(1);
     setShowTechFields(false);
     setShowNonTechFields(false);
-    setTimeout(() => setShowPopup(false), 10000);
   };
 
-  const nextStep = () => setFormStep(formStep + 1);
+  const nextStep = () => {
+    if (isStepValid) {
+      setFormStep(formStep + 1);
+    }
+  };
+
   const prevStep = () => setFormStep(formStep - 1);
 
   return (
-    <div className="min-h-screen bg-black dot-bg relative text-white overflow-x-hidden">
+    <div
+      className={`min-h-screen bg-black dot-bg relative text-white overflow-x-hidden ${
+        showPopup ? "overflow-hidden" : ""
+      }`}
+    >
       <Header />
 
       <div className="relative container mx-auto px-4 py-16">
@@ -140,8 +187,6 @@ const JoinUs: React.FC = () => {
 
           {/* Form Container */}
           <div className="bg-[#141414] p-8 rounded-2xl shadow-2xl border border-[#FF8A00]/10 relative overflow-hidden">
-            
-
             <form onSubmit={handleSubmit} className="relative">
               {/* Error message */}
               {error && (
@@ -167,7 +212,9 @@ const JoinUs: React.FC = () => {
                       {step < 3 && (
                         <div
                           className={`h-1 w-12 ${
-                            formStep >= step + 1 ? "bg-[#FF8A00]" : "bg-gray-700"
+                            formStep >= step + 1
+                              ? "bg-[#FF8A00]"
+                              : "bg-gray-700"
                           }`}
                         ></div>
                       )}
@@ -373,7 +420,6 @@ const JoinUs: React.FC = () => {
                           <option value="2nd Year">2nd Year</option>
                           <option value="3rd Year">3rd Year</option>
                           <option value="4th Year">4th Year</option>
-                          <option value="5th Year">5th Year</option>
                           <option value="graduate">Graduate</option>
                         </select>
                       </div>
@@ -427,21 +473,42 @@ const JoinUs: React.FC = () => {
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden"
+                      disabled={!isStepValid}
+                      className={`relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden ${
+                        !isStepValid ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
                       style={{
                         border: "1px solid rgb(255, 177, 104)",
-                        background: "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
-                        cursor: 'pointer'
+                        background: !isStepValid
+                          ? "rgba(227, 109, 0, 0.5)"
+                          : "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+                        cursor: !isStepValid ? "not-allowed" : "pointer",
                       }}
                     >
                       <div className="flex items-center justify-center gap-2">
-                        <span className="text-white font-medium">Next Step</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white transition-transform group-hover:translate-x-1">
+                        <span className="text-white font-medium">
+                          Next Step
+                        </span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-white transition-transform group-hover:translate-x-1"
+                        >
                           <line x1="7" y1="17" x2="17" y2="7"></line>
                           <polyline points="7 7 17 7 17 17"></polyline>
                         </svg>
                       </div>
-                      <div className={`absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300`}></div>
+                      <div
+                        className={`absolute inset-0 bg-white/0 ${
+                          !isStepValid ? "" : "group-hover:bg-white/10"
+                        } transition-all duration-300`}
+                      ></div>
                     </button>
                   </div>
                 </div>
@@ -503,6 +570,7 @@ const JoinUs: React.FC = () => {
                         checked={formData.type === "tech"}
                         onChange={handleChange}
                         className="absolute opacity-0"
+                        required
                       />
                     </div>
 
@@ -554,19 +622,20 @@ const JoinUs: React.FC = () => {
                         checked={formData.type === "nontech"}
                         onChange={handleChange}
                         className="absolute opacity-0"
+                        required
                       />
                     </div>
                   </div>
 
-                  <div className="mt-8 flex justify-between">
+                  <div className="mt-8 flex justify-between gap-4">
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="border border-gray-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center"
+                      className="border border-gray-600 text-white font-medium py-2 px-4 sm:py-3 sm:px-6 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center text-sm sm:text-base"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 mr-2"
+                        className="h-4 w-4 sm:h-5 sm:w-5 mr-2"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -584,26 +653,42 @@ const JoinUs: React.FC = () => {
                     <button
                       type="button"
                       onClick={nextStep}
-                      disabled={!formData.type}
-                      className={`relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden ${
-                        !formData.type ? "opacity-50 cursor-not-allowed" : ""
+                      disabled={!isStepValid}
+                      className={`relative w-full sm:w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden ${
+                        !isStepValid ? "opacity-50 cursor-not-allowed" : ""
                       }`}
                       style={{
                         border: "1px solid rgb(255, 177, 104)",
-                        background: !formData.type 
-                          ? "rgba(227, 109, 0, 0.5)" 
+                        background: !isStepValid
+                          ? "rgba(227, 109, 0, 0.5)"
                           : "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
-                        cursor: !formData.type ? 'not-allowed' : 'pointer'
+                        cursor: !isStepValid ? "not-allowed" : "pointer",
                       }}
                     >
                       <div className="flex items-center justify-center gap-2">
-                        <span className="text-white font-medium">Next Step</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white transition-transform group-hover:translate-x-1">
+                        <span className="text-white font-medium">
+                          Next Step
+                        </span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-white transition-transform group-hover:translate-x-1"
+                        >
                           <line x1="7" y1="17" x2="17" y2="7"></line>
                           <polyline points="7 7 17 7 17 17"></polyline>
                         </svg>
                       </div>
-                      <div className={`absolute inset-0 bg-white/0 ${!formData.type ? '' : 'group-hover:bg-white/10'} transition-all duration-300`}></div>
+                      <div
+                        className={`absolute inset-0 bg-white/0 ${
+                          !isStepValid ? "" : "group-hover:bg-white/10"
+                        } transition-all duration-300`}
+                      ></div>
                     </button>
                   </div>
                 </div>
@@ -651,6 +736,7 @@ const JoinUs: React.FC = () => {
                             onChange={handleChange}
                             className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
                             placeholder="https://github.com/yourusername"
+                            required
                           />
                         </div>
                       </div>
@@ -687,6 +773,7 @@ const JoinUs: React.FC = () => {
                             className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
                             placeholder="Languages, frameworks, tools you're proficient with"
                             rows={3}
+                            required
                           ></textarea>
                         </div>
                       </div>
@@ -721,6 +808,7 @@ const JoinUs: React.FC = () => {
                             value={formData.experience}
                             onChange={handleChange}
                             className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
+                            required
                           >
                             <option value="">Select Experience</option>
                             <option value="0">
@@ -806,6 +894,7 @@ const JoinUs: React.FC = () => {
                             value={formData.interests}
                             onChange={handleChange}
                             className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
+                            required
                           >
                             <option value="">Select Area of Interest</option>
                             <option value="marketing">
@@ -856,6 +945,7 @@ const JoinUs: React.FC = () => {
                             className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
                             placeholder="What are your main strengths and skills?"
                             rows={3}
+                            required
                           ></textarea>
                         </div>
                       </div>
@@ -892,6 +982,7 @@ const JoinUs: React.FC = () => {
                             className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
                             placeholder="Tell us about any relevant projects or experience you have"
                             rows={3}
+                            required
                           ></textarea>
                         </div>
                       </div>
@@ -902,15 +993,15 @@ const JoinUs: React.FC = () => {
 
               {/* Submit button */}
               {formStep === 3 && (
-                <div className="mt-8 flex justify-between">
+                <div className="mt-8 flex justify-between gap-4">
                   <button
                     type="button"
                     onClick={prevStep}
-                    className="border border-gray-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center"
+                    className="border border-gray-600 text-white font-medium py-2 px-4 sm:py-3 sm:px-6 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center text-sm sm:text-base"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 mr-2"
+                      className="h-4 w-4 sm:h-5 sm:w-5 mr-2"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -927,37 +1018,78 @@ const JoinUs: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden"
+                    className={`relative w-full sm:w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden ${
+                      !isStepValid || isSubmitting
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
+                    }`}
                     style={{
                       border: "1px solid rgb(255, 177, 104)",
-                      background: isSubmitting 
-                        ? "rgba(227, 109, 0, 0.5)" 
-                        : "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
-                      opacity: isSubmitting ? 0.7 : 1,
-                      cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                      background:
+                        !isStepValid || isSubmitting
+                          ? "rgba(227, 109, 0, 0.5)"
+                          : "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+                      cursor:
+                        !isStepValid || isSubmitting
+                          ? "not-allowed"
+                          : "pointer",
                     }}
-                    disabled={isSubmitting}
+                    disabled={!isStepValid || isSubmitting}
                   >
                     <div className="flex items-center justify-center gap-2">
                       {isSubmitting ? (
                         <>
-                          <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          <svg
+                            className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
                           </svg>
-                          <span className="text-white font-medium">Submitting...</span>
+                          <span className="text-white font-medium">
+                            Submitting...
+                          </span>
                         </>
                       ) : (
                         <>
                           <span className="text-white font-medium">Submit</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white transition-transform group-hover:translate-x-1">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-white transition-transform group-hover:translate-x-1"
+                          >
                             <line x1="7" y1="17" x2="17" y2="7"></line>
                             <polyline points="7 7 17 7 17 17"></polyline>
                           </svg>
                         </>
                       )}
                     </div>
-                    <div className={`absolute inset-0 bg-white/0 ${!isSubmitting && 'group-hover:bg-white/10'} transition-all duration-300`}></div>
+                    <div
+                      className={`absolute inset-0 bg-white/0 ${
+                        !isStepValid || isSubmitting
+                          ? ""
+                          : "group-hover:bg-white/10"
+                      } transition-all duration-300`}
+                    ></div>
                   </button>
                 </div>
               )}
@@ -967,8 +1099,20 @@ const JoinUs: React.FC = () => {
           {/* Success Popup */}
           {showPopup && (
             <div className="fixed inset-0 flex items-center justify-center z-50">
-              <div className="absolute inset-0 bg-black bg-opacity-70 backdrop-blur-sm transition-opacity duration-300"></div>
-              <div className="bg-[#141414] border border-[#FF8A00]/20 rounded-xl p-8 shadow-2xl relative z-10 max-w-md w-full transform transition-all duration-300 scale-95 opacity-0 animate-fade-in">
+              <style>
+                {`@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }`}
+              </style>
+              <div
+                className="absolute inset-0 bg-black bg-opacity-70 transition-opacity duration-300"
+                onClick={() => setShowPopup(false)}
+              ></div>
+              <div className="bg-[#141414] border border-[#FF8A00]/20 rounded-xl p-8 shadow-2xl relative z-10 max-w-md w-full mx-4 animate-fade-in">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-16 h-16 bg-[#FF8A00] bg-opacity-20 rounded-full flex items-center justify-center mb-4">
                     <svg
@@ -997,14 +1141,15 @@ const JoinUs: React.FC = () => {
                     className="relative w-[10rem] px-4 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden"
                     style={{
                       border: "1px solid rgb(255, 177, 104)",
-                      background: "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
-                      cursor: 'pointer'
+                      background:
+                        "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+                      cursor: "pointer",
                     }}
                   >
                     <div className="flex items-center justify-center gap-2">
                       <span className="text-white font-medium">Close</span>
                     </div>
-                    <div className={`absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300`}></div>
+                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300"></div>
                   </button>
                 </div>
               </div>
