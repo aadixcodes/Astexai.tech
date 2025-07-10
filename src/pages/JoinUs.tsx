@@ -6,6 +6,8 @@ import FinalCTA from "../components/FinalCTA";
 interface FormData {
   name: string;
   email: string;
+  phone: string; // Added
+  address: string; // Added
   college: string;
   age: string;
   year: string;
@@ -24,6 +26,8 @@ const JoinUs: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
+    phone: "", // Added
+    address: "", // Added
     college: "",
     age: "",
     year: "",
@@ -54,6 +58,8 @@ const JoinUs: React.FC = () => {
         valid =
           !!formData.name &&
           !!formData.email &&
+          !!formData.phone && // Added
+          !!formData.address && // Added
           !!formData.college &&
           !!formData.age &&
           !!formData.year &&
@@ -136,6 +142,8 @@ const JoinUs: React.FC = () => {
     setFormData({
       name: "",
       email: "",
+      phone: "", // Added
+      address: "", // Added
       college: "",
       age: "",
       year: "",
@@ -303,6 +311,82 @@ const JoinUs: React.FC = () => {
                           onChange={handleChange}
                           className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
                           placeholder="your.email@example.com"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Phone Number Field */}
+                    <div className="form-group">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Phone Number
+                      </label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-gray-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1.5}
+                              d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 8a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm8-8a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 8a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                            />
+                          </svg>
+                        </div>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
+                          placeholder="Your phone number"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Address Field */}
+                    <div className="form-group">
+                      <label
+                        htmlFor="address"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Address
+                      </label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5 text-gray-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1.5}
+                              d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0l-4.243 4.243A8 8 0 1116.657 3.343z"
+                            />
+                          </svg>
+                        </div>
+                        <input
+                          type="text"
+                          id="address"
+                          name="address"
+                          value={formData.address}
+                          onChange={handleChange}
+                          className="w-full bg-[#1E1E1E] border border-gray-700 rounded-lg py-3 px-10 focus:outline-none focus:ring-2 focus:ring-[#FF8A00] focus:border-transparent"
+                          placeholder="Your address"
                           required
                         />
                       </div>
