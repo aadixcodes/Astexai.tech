@@ -708,146 +708,160 @@ const InfluencersMarketing = () => {
 </section>
 
       {/* Pricing Section */}
-      <section className="py-16 bg-black dot-bg relative overflow-hidden">
-        <div className="absolute -top-30 -left-40 w-80 h-80 rounded-full bg-gradient-to-br from-[#FFB168]/20 to-[#E36D00]/10 blur-3xl"></div>
-        <div className="absolute bottom-20 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-[#FFB168]/20 to-[#E36D00]/10 blur-3xl"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-block bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-full px-6 py-2 mb-6">
-              <span className="text-primary text-sm font-medium">
-                Flexible Options
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Pricing & <span className="text-primary">Plans</span>
-            </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              Choose the perfect plan for your influencer marketing needs
-            </p>
-          </div>
+<section className="py-16 bg-black dot-bg relative overflow-hidden">
+  <div className="absolute -top-30 -left-40 w-80 h-80 rounded-full bg-gradient-to-br from-[#FFB168]/20 to-[#E36D00]/10 blur-3xl"></div>
+  <div className="absolute bottom-20 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-[#FFB168]/20 to-[#E36D00]/10 blur-3xl"></div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <div className="inline-block bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-full px-6 py-2 mb-6">
+        <span className="text-primary text-sm font-medium">
+          Flexible Options
+        </span>
+      </div>
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+        Pricing & <span className="text-primary">Plans</span>
+      </h2>
+      <p className="text-white/70 max-w-2xl mx-auto">
+        Choose the perfect plan for your influencer marketing needs
+      </p>
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border flex flex-col items-center  border-white/10 rounded-xl p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">Starter</h3>
-                <div className="flex items-center justify-center">
-                  <span className="text-4xl font-bold text-primary">$29</span>
-                  <span className="text-white/70 ml-2">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Up to 5 influencer connections</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Basic analytics</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Email support</span>
-                </li>
-              </ul>
-              <button
-                onClick={redirectToWhatsApp}
-                className="relative w-[14rem] px-3 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden"
-                style={{
-                  border: "1px solid rgb(255, 177, 104)",
-                  background:
-                    "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
-                }}
-              >
-                Get Started
-              </button>
-            </div>
-
-            <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border border-primary/30 rounded-xl p-8 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 relative flex flex-col items-center">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full shadow-md">
-                Most Popular
-              </div>
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Professional
-                </h3>
-                <div className="flex items-center justify-center">
-                  <span className="text-4xl font-bold text-primary">$69</span>
-                  <span className="text-white/70 ml-2">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Up to 20 influencer connections</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Advanced analytics & reporting</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Priority email & chat support</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Campaign management tools</span>
-                </li>
-              </ul>
-              <button
-                onClick={redirectToWhatsApp}
-                className="relative w-[14rem] px-3 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden"
-                style={{
-                  border: "1px solid rgb(255, 177, 104)",
-                  background:
-                    "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
-                }}
-              >
-                Get Started
-              </button>
-            </div>
-
-            <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border border-white/10 rounded-xl p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 flex flex-col items-center">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  Enterprise
-                </h3>
-                <div className="flex items-center justify-center">
-                  <span className="text-4xl font-bold text-primary">$149</span>
-                  <span className="text-white/70 ml-2">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Unlimited influencer connections</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Custom analytics & reporting</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>24/7 priority support</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Advanced campaign tools</span>
-                </li>
-                <li className="flex items-center text-white/70 hover:text-white transition-colors duration-300">
-                  <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                  <span>Custom integrations</span>
-                </li>
-              </ul>
-              <button
-                onClick={redirectToWhatsApp}
-                className="w-full bg-[#1A1A1A] text-white border border-white/10 rounded-lg px-6 py-3 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300"
-              >
-                Contact Us
-              </button>
-            </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Starter Plan */}
+      <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border flex flex-col items-center border-white/10 rounded-xl p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10">
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-white mb-2">Starter</h3>
+          <div className="flex items-center justify-center">
+            <span className="text-4xl font-bold text-primary">₹15,000</span>
+            <span className="text-white/70 ml-2">one time only</span>
           </div>
         </div>
-      </section>
+        <ul className="space-y-4 mb-8">
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Shared repost on 15+ Instagram handles</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Accounts with less than 100K followers</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Original reach guaranteed</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Basic performance analytics</span>
+          </li>
+        </ul>
+        <button
+          onClick={redirectToWhatsApp}
+          className="relative w-[14rem] px-3 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden"
+          style={{
+            border: "1px solid rgb(255, 177, 104)",
+            background:
+              "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+          }}
+        >
+          Get Started
+        </button>
+      </div>
+
+      {/* Professional Plan */}
+      <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border border-primary/30 rounded-xl p-8 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 relative flex flex-col items-center">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full shadow-md">
+          Most Popular
+        </div>
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-white mb-2">
+            Professional
+          </h3>
+          <div className="flex items-center justify-center">
+            <span className="text-4xl font-bold text-primary">₹25,000</span>
+            <span className="text-white/70 ml-2">one time only</span>
+          </div>
+        </div>
+        <ul className="space-y-4 mb-8">
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Shared repost + stories on 15 Instagram accounts</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Accounts with over 100K followers</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Original reach guaranteed</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Detailed performance analytics</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Priority content scheduling</span>
+          </li>
+        </ul>
+        <button
+          onClick={redirectToWhatsApp}
+          className="relative w-[14rem] px-3 py-2 rounded-[7px] transition-all duration-200 group overflow-hidden"
+          style={{
+            border: "1px solid rgb(255, 177, 104)",
+            background:
+              "radial-gradient(50% 50% at 50% 100%, rgb(255, 177, 104) 0%, rgb(227, 109, 0) 100%)",
+          }}
+        >
+          Get Started
+        </button>
+      </div>
+
+      {/* Enterprise Plan */}
+      <div className="bg-gradient-to-b from-[#141414] to-[#0A0A0A] border border-white/10 rounded-xl p-8 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 flex flex-col items-center">
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-white mb-2">
+            Enterprise
+          </h3>
+          <div className="flex items-center justify-center">
+            <span className="text-4xl font-bold text-primary">Custom</span>
+          </div>
+        </div>
+        <ul className="space-y-4 mb-8">
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Repost + stories on premium accounts</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>24/7 dedicated support</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Access to 30 top influencers</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Custom campaign strategy</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Advanced analytics dashboard</span>
+          </li>
+          <li className="flex items-start text-white/70 hover:text-white transition-colors duration-300">
+            <Star className="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-1" />
+            <span>Monthly performance reports</span>
+          </li>
+        </ul>
+        <button
+          onClick={redirectToWhatsApp}
+          className="w-full bg-[#1A1A1A] text-white border border-white/10 rounded-lg px-6 py-3 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300"
+        >
+          Contact Us
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Final CTA Section */}
       <section className="py-16 bg-black dot-bg">
