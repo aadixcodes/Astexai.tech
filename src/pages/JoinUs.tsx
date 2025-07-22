@@ -114,7 +114,7 @@ const JoinUs: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://astexaii.app.n8n.cloud/webhook/273c39ee-f243-406d-bb7b-b4a163c2088f",
+        "https://astexhello.app.n8n.cloud/webhook/273c39ee-f243-406d-bb7b-b4a163c2088f",
         {
           method: "POST",
           headers: {
