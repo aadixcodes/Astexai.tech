@@ -7,7 +7,7 @@ const Testimonials = () => {
     role: "Founder & CEO",
     company: "Ocvision",
     quote: "Astex delivered a stunning, high-performance website that perfectly reflected our brand identity. Their attention to detail and commitment to deadlines was exceptional. Truly one of the smoothest web development experiences we've had.",
-    image: "/assets/jay2.JPG",
+    image: "/assets/testimonial.png",
     stats: [
       { value: "41%", label: "boost in product engagement." },
       { value: "2X", label: "Faster customer resolutions" }
