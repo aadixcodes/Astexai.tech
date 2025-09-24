@@ -8,14 +8,12 @@ const Mission = () => {
   const [loadedWords, setLoadedWords] = useState([]);
   
   const headingLines = [
-    "We Build",
-    "Brands",
-    "That",
-    "Stand Out",
-    "Online With",
-    "Next-Level",
-    "Web",
-    "Experiences."
+    "We Build Innovative ",
+    "AI-Powered",
+    "Solutions",
+    "That Truly",
+    "Redefine",
+    "Business Growth",
   ];
 
 
@@ -76,7 +74,7 @@ const handleRedirect = () => {
           
           {/* Description Text */}
           <p className={`text-white/70 text-lg md:text-xl leading-relaxed max-w-4xl mx-auto mb-12 transition-all duration-500 delay-[${200 * (headingLines.length + 1)}ms] ${loadedWords.length === headingLines.length ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          Because first impressions shape reputations — our mission is to craft beautiful, functional websites that engage and convert. That’s why we exist.
+          At Astex AI, our mission is to create intelligent AI agents and automation systems that help businesses save time, reduce costs, and scale faster.
           </p>
 
           {/* CTA Button */}

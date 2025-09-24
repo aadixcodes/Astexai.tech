@@ -63,9 +63,9 @@ const Header = () => {
               <div className="flex-shrink-0">
                 <a href="/" className="text-2xl font-bold text-white">
                   <img 
-                    src="/assets/logo1.png" 
+                    src="/assets/logo2.png" 
                     alt="Logo" 
-                    className="h-8 w-auto"
+                    className="h-12 w-auto"
                   />
                 </a>
               </div>
